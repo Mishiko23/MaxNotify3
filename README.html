@@ -1,0 +1,111 @@
+<h1>MaxNotify 3 для miniShop3</h1>
+
+<p><strong>MaxNotify 3</strong> — отдельный компонент для MODX Revolution 3 и miniShop3,
+который отправляет уведомления о заказах в мессенджер MAX через
+<a href="https://dev.max.ru/docs/maxbusiness/connection">официальный MAX Business API</a>
+или через сервис (<a href="https://rumaxbot.ru">https://rumaxbot.ru</a>).</p>
+
+<p>Компонент помогает владельцу и менеджерам интернет-магазина быстро узнавать
+о новых заказах и изменениях их статуса без постоянной проверки панели MODX.</p>
+
+<h2>Автор</h2>
+<p>Разработчик: Mishiko23<br>Email: bigo2008@gmail.com</p>
+
+<h2>Возможности</h2>
+<ul>
+  <li>уведомление сразу после создания заказа miniShop3;</li>
+  <li>уведомление при изменении статуса заказа;</li>
+  <li>фильтрация уведомлений по ID статусов;</li>
+  <li>номер, сумма и состав заказа;</li>
+  <li>имя, телефон и email покупателя;</li>
+  <li>адрес доставки и комментарий клиента;</li>
+  <li>название способа доставки и оплаты;</li>
+  <li>ссылка на конкретный заказ в панели MODX;</li>
+  <li>официальный MAX Business API и сервис rumaxbot.ru на выбор;</li>
+  <li>отправка одному или нескольким чатам, каналам или пользователям;</li>
+  <li>сообщения в формате Markdown или HTML;</li>
+  <li>редактируемые чанки сообщений;</li>
+  <li>запись ошибок API и соединения в журнал MODX.</li>
+</ul>
+
+<h2>Требования</h2>
+<ul>
+  <li>MODX Revolution 3.x;</li>
+  <li>miniShop3 1.x;</li>
+  <li>PHP 8.1+;</li>
+  <li>PHP cURL или включённый <code>allow_url_fopen</code>;</li>
+  <li>токен официального MAX-бота или канал и API-ключ rumaxbot.ru.</li>
+</ul>
+
+<p>Компонент проверен с MODX Revolution 3.2.1-pl и miniShop3 1.11.1-beta1.</p>
+
+<h2>Установка</h2>
+<ol>
+  <li>Откройте в MODX раздел <strong>Пакеты → Установщик</strong>.</li>
+  <li>Найдите компонент MaxNotify 3 в репозитории.</li>
+  <li>Нажмите <strong>Скачать</strong>, затем <strong>Установить</strong>.</li>
+  <li>После установки очистите кэш MODX.</li>
+</ol>
+
+<h2>Настройка</h2>
+<p>Откройте <strong>Системные настройки</strong> и выберите пространство имён <code>maxnotify3</code>.</p>
+
+<p>Основные параметры:</p>
+<ul>
+  <li><strong>maxnotify3.enabled</strong> — включает или отключает компонент;</li>
+  <li><strong>maxnotify3.provider</strong> — <code>rumaxbot</code> или <code>maxbusiness</code>;</li>
+  <li><strong>maxnotify3.format</strong> — <code>markdown</code> или <code>html</code>;</li>
+  <li><strong>maxnotify3.timeout</strong> — таймаут API-запроса в секундах;</li>
+  <li><strong>maxnotify3.notify_new_order</strong> — уведомления о новых заказах;</li>
+  <li><strong>maxnotify3.notify_status_change</strong> — уведомления о смене статуса;</li>
+  <li><strong>maxnotify3.statuses</strong> — ID статусов через запятую, пустое поле разрешает все.</li>
+</ul>
+
+<h2>Подключение официального MAX Business API</h2>
+<p>Официальное подключение доступно верифицированным организациям и ИП, которые являются резидентами РФ.</p>
+
+<p>Создайте и верифицируйте профиль на
+<a href="https://business.max.ru/">платформе MAX для партнёров</a>.
+Создайте чат-бота и дождитесь прохождения модерации.
+Получите токен в разделе <strong>Чат-боты → Перейти → Расширенные настройки → Настроить</strong>.
+Добавьте бота в нужный чат или канал либо запустите личный диалог с ботом.
+Получите <strong>chat_id</strong> или <strong>user_id</strong> через
+<strong>Webhook/Long Polling API MAX</strong>.
+Установите <code>maxnotify3.provider</code> в значение <code>maxbusiness</code>.</p>
+
+<p>Заполните настройки:</p>
+<ul>
+  <li><strong>maxnotify3.max_token</strong> — токен бота;</li>
+  <li><strong>maxnotify3.max_recipient_type</strong> — <strong>chat_id</strong> или <strong>user_id</strong>;</li>
+  <li><strong>maxnotify3.max_recipient_ids</strong> — один или несколько ID через запятую;</li>
+  <li><strong>maxnotify3.max_notify</strong> — уведомлять участников чата;</li>
+  <li><strong>maxnotify3.max_disable_link_preview</strong> — отключить превью ссылок.</li>
+</ul>
+
+<p>Официальный API принимает сообщения длиной до 4000 символов. Более длинные уведомления MaxNotify 3 автоматически сокращает.</p>
+
+<h2>Подключение rumaxbot.ru</h2>
+<ol>
+  <li>Зарегистрируйтесь на rumaxbot.ru и подтвердите email.</li>
+  <li>Создайте канал.</li>
+  <li>Подключите MAX-бота к каналу по инструкции сервиса.</li>
+  <li>Создайте API-ключ канала.</li>
+  <li>Укажите ключ в настройке <code>maxnotify3.api_key</code>.</li>
+</ol>
+
+<p>API-ключ нельзя публиковать или добавлять в репозиторий.</p>
+
+<h2>Шаблоны сообщений</h2>
+<p>После установки в категории элементов <code>MaxNotify 3</code> будут созданы чанки:</p>
+<ul>
+  <li><code>maxNotify3OrderCreated</code> — новый заказ в Markdown;</li>
+  <li><code>maxNotify3OrderStatus</code> — новый статус в Markdown;</li>
+  <li><code>maxNotify3OrderCreatedHtml</code> — новый заказ в HTML;</li>
+  <li><code>maxNotify3OrderStatusHtml</code> — новый статус в HTML.</li>
+</ul>
+
+<p>Доступные плейсхолдеры: <code>num</code>, <code>uuid</code>, <code>cost</code>,
+<code>receiver</code>, <code>first_name</code>, <code>last_name</code>, <code>phone</code>,
+<code>email</code>, <code>address</code>, <code>comment</code>, <code>order_comment</code>,
+<code>products</code>, <code>delivery_name</code>, <code>payment_name</code>,
+<code>status_name</code>, <code>manager_url</code> и другие поля заказа miniShop3.</p>
