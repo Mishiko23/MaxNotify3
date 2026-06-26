@@ -35,7 +35,9 @@ Email: bigo2008@gmail.com
 - miniShop3 1.x;
 - PHP 8.1+;
 - PHP cURL или включённый `allow_url_fopen`;
-- токен официального MAX-бота или канал и API-ключ rumaxbot.ru.
+- токен официального MAX-бота или канал и API-ключ rumaxbot.ru;
+- для MAX Business API: доступ к `https://platform-api2.max.ru/messages` и
+  сертификат Минцифры, добавленный в доверенные на сервере.
 
 Компонент проверен с MODX Revolution 3.2.1-pl и miniShop3 1.11.1-beta1.
 
@@ -62,6 +64,15 @@ Email: bigo2008@gmail.com
 
 ## Подключение официального MAX Business API
 
+С 19 июля 2026 для корректной работы чат-ботов и мини-приложений MAX требуется
+использовать адрес `platform-api2.max.ru` вместо `platform-api.max.ru`.
+MaxNotify 3 по умолчанию отправляет запросы на
+`https://platform-api2.max.ru/messages`.
+
+Также на сервере, где установлен MODX, сертификат Минцифры должен быть добавлен
+в доверенное хранилище ОС/PHP/cURL. Это системная настройка сервера, а не
+настройка компонента.
+
 Официальное подключение доступно верифицированным организациям и ИП, которые
 являются резидентами РФ.
 
@@ -77,6 +88,8 @@ Email: bigo2008@gmail.com
 Заполните настройки:
 
 - <strong>maxnotify3.max_token</strong> — токен бота;
+- <strong>maxnotify3.max_api_url</strong> — endpoint отправки сообщений MAX,
+  по умолчанию `https://platform-api2.max.ru/messages`;
 - <strong>maxnotify3.max_recipient_type</strong> — <strong>chat_id</strong> или <strong>user_id</strong>;
 - <strong>maxnotify3.max_recipient_ids</strong> — один или несколько ID через запятую;
 - <strong>maxnotify3.max_notify</strong> — уведомлять участников чата;

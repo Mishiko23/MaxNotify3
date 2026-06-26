@@ -41,7 +41,7 @@ class MaxNotify3
             'maxApiUrl' => $this->modx->getOption(
                 'maxnotify3.max_api_url',
                 null,
-                'https://platform-api.max.ru/messages'
+                'https://platform-api2.max.ru/messages'
             ),
             'maxToken' => trim((string) $this->modx->getOption('maxnotify3.max_token', null, '')),
             'maxRecipientType' => strtolower((string) $this->modx->getOption(

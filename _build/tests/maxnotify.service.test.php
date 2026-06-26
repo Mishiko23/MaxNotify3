@@ -51,7 +51,7 @@ namespace {
     $modx = new \MODX\Revolution\modX();
     $official = new TestMaxNotify3($modx, [
         'provider' => 'maxbusiness',
-        'maxApiUrl' => 'https://platform-api.max.ru/messages',
+        'maxApiUrl' => 'https://platform-api2.max.ru/messages',
         'maxToken' => 'official-token',
         'maxRecipientType' => 'chat_id',
         'maxRecipientIds' => '123, 456',

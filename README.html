@@ -34,7 +34,8 @@
   <li>miniShop3 1.x;</li>
   <li>PHP 8.1+;</li>
   <li>PHP cURL или включённый <code>allow_url_fopen</code>;</li>
-  <li>токен официального MAX-бота или канал и API-ключ rumaxbot.ru.</li>
+  <li>токен официального MAX-бота или канал и API-ключ rumaxbot.ru;</li>
+  <li>для MAX Business API: доступ к <code>https://platform-api2.max.ru/messages</code> и сертификат Минцифры, добавленный в доверенные на сервере.</li>
 </ul>
 
 <p>Компонент проверен с MODX Revolution 3.2.1-pl и miniShop3 1.11.1-beta1.</p>
@@ -62,6 +63,15 @@
 </ul>
 
 <h2>Подключение официального MAX Business API</h2>
+<p>С 19 июля 2026 для корректной работы чат-ботов и мини-приложений MAX требуется
+использовать адрес <code>platform-api2.max.ru</code> вместо <code>platform-api.max.ru</code>.
+MaxNotify 3 по умолчанию отправляет запросы на
+<code>https://platform-api2.max.ru/messages</code>.</p>
+
+<p>Также на сервере, где установлен MODX, сертификат Минцифры должен быть добавлен
+в доверенное хранилище ОС/PHP/cURL. Это системная настройка сервера, а не
+настройка компонента.</p>
+
 <p>Официальное подключение доступно верифицированным организациям и ИП, которые являются резидентами РФ.</p>
 
 <p>Создайте и верифицируйте профиль на
@@ -76,6 +86,7 @@
 <p>Заполните настройки:</p>
 <ul>
   <li><strong>maxnotify3.max_token</strong> — токен бота;</li>
+  <li><strong>maxnotify3.max_api_url</strong> — endpoint отправки сообщений MAX, по умолчанию <code>https://platform-api2.max.ru/messages</code>;</li>
   <li><strong>maxnotify3.max_recipient_type</strong> — <strong>chat_id</strong> или <strong>user_id</strong>;</li>
   <li><strong>maxnotify3.max_recipient_ids</strong> — один или несколько ID через запятую;</li>
   <li><strong>maxnotify3.max_notify</strong> — уведомлять участников чата;</li>

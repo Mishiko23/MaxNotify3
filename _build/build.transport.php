@@ -142,7 +142,7 @@ $settings = [
     'provider' => ['value' => 'rumaxbot', 'xtype' => 'textfield', 'area' => 'maxnotify3_main'],
     'api_url' => ['value' => 'https://rumaxbot.ru/api/v1/messages', 'xtype' => 'textfield', 'area' => 'maxnotify3_api'],
     'api_key' => ['value' => '', 'xtype' => 'textfield', 'area' => 'maxnotify3_api'],
-    'max_api_url' => ['value' => 'https://platform-api.max.ru/messages', 'xtype' => 'textfield', 'area' => 'maxnotify3_max_business'],
+    'max_api_url' => ['value' => 'https://platform-api2.max.ru/messages', 'xtype' => 'textfield', 'area' => 'maxnotify3_max_business'],
     'max_token' => ['value' => '', 'xtype' => 'textfield', 'area' => 'maxnotify3_max_business'],
     'max_recipient_type' => ['value' => 'chat_id', 'xtype' => 'textfield', 'area' => 'maxnotify3_max_business'],
     'max_recipient_ids' => ['value' => '', 'xtype' => 'textfield', 'area' => 'maxnotify3_max_business'],
